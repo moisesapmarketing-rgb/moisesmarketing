@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #0a0a0a;
+  --color-foreground: #f0ede8;
+  --color-muted: #6b6b6b;
+  --color-border: #1e1e1e;
+  --color-accent: #c8b89a;
+  --font-sans: var(--font-geist-sans);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: #0a0a0a;
+  color: #f0ede8;
+  scroll-behavior: auto;
+}
+
+body {
+  background: #0a0a0a;
+  color: #f0ede8;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Custom cursor */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background: #f0ede8;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease, background 0.3s ease;
+  mix-blend-mode: difference;
+}
+
+.cursor.expanded {
+  width: 48px;
+  height: 48px;
+}
+
+/* Smooth scroll for GSAP */
+.smooth-wrapper {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.smooth-content {
+  will-change: transform;
+}
+
+/* Section separators */
+section {
+  position: relative;
+}
+
+/* Link resets */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Selection */
+::selection {
+  background: #c8b89a;
+  color: #0a0a0a;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 2px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+/* Text clip container for GSAP reveals */
+.split-text {
+  overflow: hidden;
+  display: block;
+}
