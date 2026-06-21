@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -178,28 +179,13 @@ export default function Manifesto() {
             borderRadius: "2px",
           }}
         >
-          {/* PHOTO: Replace this div with an <Image> component pointing to your professional photo */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              background: "linear-gradient(135deg, #161616 0%, #1e1e1e 100%)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "11px",
-                letterSpacing: "0.2em",
-                textTransform: "uppercase",
-                color: "#3a3a3a",
-              }}
-            >
-              Foto profesional
-            </p>
-          </div>
+          <Image
+            src="/moises.png"
+            alt="Moises Mejias"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center top" }}
+            priority
+          />
 
           {/* Overlay label */}
           <div
