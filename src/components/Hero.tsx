@@ -1,16 +1,18 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+
+const FEATURED_VIDEO_ID = "YOgaW4ks81A";
 
 export default function Hero() {
   const containerRef = useRef<HTMLElement>(null);
+  const [videoPlaying, setVideoPlaying] = useState(false);
 
   // Scroll indicator only — CSS handles the intro animation
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
-    // Slight parallax on scroll
     const onScroll = () => {
       const y = window.scrollY;
       const eyebrow = el.querySelector<HTMLElement>(".hero-eyebrow");
@@ -27,12 +29,13 @@ export default function Hero() {
       style={{
         minHeight: "100svh",
         background: "#0a0a0a",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-end",
-        padding: "0 40px 64px",
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        alignItems: "flex-end",
+        padding: "120px 40px 64px",
         position: "relative",
         overflow: "hidden",
+        gap: "80px",
       }}
     >
       {/* Subtle background grid */}
@@ -48,15 +51,8 @@ export default function Hero() {
         }}
       />
 
-      {/* Headline block */}
-      <div
-        style={{
-          position: "relative",
-          maxWidth: "1400px",
-          margin: "0 auto",
-          width: "100%",
-        }}
-      >
+      {/* LEFT: Headline block */}
+      <div style={{ position: "relative" }}>
         <p
           className="hero-eyebrow"
           style={{
@@ -73,7 +69,7 @@ export default function Hero() {
 
         <h1
           style={{
-            fontSize: "clamp(52px, 9vw, 130px)",
+            fontSize: "clamp(48px, 6.5vw, 100px)",
             fontWeight: 900,
             lineHeight: 0.92,
             letterSpacing: "-0.04em",
@@ -89,11 +85,7 @@ export default function Hero() {
           ].map(({ text, delay, accent }) => (
             <span
               key={text}
-              style={{
-                display: "block",
-                overflow: "hidden",
-                lineHeight: 1.05,
-              }}
+              style={{ display: "block", overflow: "hidden", lineHeight: 1.05 }}
             >
               <span
                 style={{
@@ -108,14 +100,9 @@ export default function Hero() {
           ))}
         </h1>
 
-        {/* Sub + Stats row */}
+        {/* Sub + Stats */}
         <div
           style={{
-            display: "flex",
-            alignItems: "flex-end",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: "40px",
             borderTop: "1px solid #1e1e1e",
             paddingTop: "32px",
             animation: "fadeUp 0.7s ease 0.72s both",
@@ -123,19 +110,19 @@ export default function Hero() {
         >
           <p
             style={{
-              fontSize: "clamp(14px, 1.6vw, 18px)",
+              fontSize: "clamp(14px, 1.4vw, 16px)",
               color: "#6b6b6b",
-              maxWidth: "480px",
+              maxWidth: "440px",
               lineHeight: 1.65,
               fontWeight: 400,
+              marginBottom: "40px",
             }}
           >
             Estrategia comercial, marketing digital e inteligencia artificial
             integrados en un solo proceso. Desde la marca hasta el cliente que
             regresa.
           </p>
-
-          <div style={{ display: "flex", gap: "48px", flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: "40px", flexWrap: "wrap" }}>
             {[
               { value: "50+", label: "Marcas escaladas" },
               { value: "360°", label: "Ciclo comercial" },
@@ -144,7 +131,7 @@ export default function Hero() {
               <div key={stat.label}>
                 <p
                   style={{
-                    fontSize: "clamp(28px, 3.5vw, 44px)",
+                    fontSize: "clamp(24px, 3vw, 40px)",
                     fontWeight: 900,
                     letterSpacing: "-0.04em",
                     color: "#f0ede8",
@@ -153,14 +140,7 @@ export default function Hero() {
                 >
                   {stat.value}
                 </p>
-                <p
-                  style={{
-                    fontSize: "11px",
-                    color: "#6b6b6b",
-                    letterSpacing: "0.06em",
-                    marginTop: "6px",
-                  }}
-                >
+                <p style={{ fontSize: "11px", color: "#6b6b6b", letterSpacing: "0.06em", marginTop: "6px" }}>
                   {stat.label}
                 </p>
               </div>
@@ -169,12 +149,147 @@ export default function Hero() {
         </div>
       </div>
 
+      {/* RIGHT: Featured video */}
+      <div
+        style={{
+          position: "relative",
+          animation: "fadeUp 0.9s ease 0.6s both",
+        }}
+      >
+        <div
+          style={{
+            position: "relative",
+            aspectRatio: "16/9",
+            overflow: "hidden",
+            borderRadius: "2px",
+            background: "#111",
+          }}
+        >
+          {videoPlaying ? (
+            <iframe
+              src={`https://www.youtube.com/embed/${FEATURED_VIDEO_ID}?autoplay=1&rel=0`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              style={{ width: "100%", height: "100%", border: "none" }}
+              title="Podcast Moises Mejias"
+            />
+          ) : (
+            <button
+              onClick={() => setVideoPlaying(true)}
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+              }}
+              aria-label="Reproducir podcast"
+            >
+              <img
+                src={`https://img.youtube.com/vi/${FEATURED_VIDEO_ID}/maxresdefault.jpg`}
+                alt="Podcast Moises Mejias"
+                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+              />
+              {/* Overlay */}
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: "linear-gradient(to top, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.15) 60%, transparent 100%)",
+                }}
+              />
+              {/* Play button */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%,-50%)",
+                  width: "72px",
+                  height: "72px",
+                  border: "1px solid rgba(200,184,154,0.6)",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backdropFilter: "blur(4px)",
+                  background: "rgba(10,10,10,0.4)",
+                  transition: "background 0.2s, border-color 0.2s",
+                }}
+              >
+                <div
+                  style={{
+                    width: 0,
+                    height: 0,
+                    borderTop: "10px solid transparent",
+                    borderBottom: "10px solid transparent",
+                    borderLeft: "16px solid #c8b89a",
+                    marginLeft: "4px",
+                  }}
+                />
+              </div>
+              {/* Label */}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "24px",
+                  left: "24px",
+                  right: "24px",
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: "10px",
+                    letterSpacing: "0.16em",
+                    textTransform: "uppercase",
+                    color: "#c8b89a",
+                    display: "block",
+                    marginBottom: "8px",
+                  }}
+                >
+                  Podcast
+                </span>
+                <p
+                  style={{
+                    fontSize: "clamp(14px, 1.4vw, 18px)",
+                    fontWeight: 700,
+                    color: "#f0ede8",
+                    letterSpacing: "-0.02em",
+                    textAlign: "left",
+                    lineHeight: 1.3,
+                  }}
+                >
+                  Cómo estructurar el ciclo comercial de tu negocio
+                </p>
+              </div>
+            </button>
+          )}
+        </div>
+        {/* Sub-label below video */}
+        <p
+          style={{
+            fontSize: "11px",
+            color: "#3a3a3a",
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            marginTop: "16px",
+            textAlign: "right",
+          }}
+        >
+          Ver todos los videos en YouTube
+        </p>
+      </div>
+
       {/* Scroll indicator */}
       <div
         style={{
           position: "absolute",
           bottom: "40px",
-          right: "40px",
+          left: "50%",
+          transform: "translateX(-50%)",
           display: "flex",
           alignItems: "center",
           gap: "12px",
