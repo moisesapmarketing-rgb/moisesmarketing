@@ -217,7 +217,6 @@ export default function Services() {
                 <span
                   style={{
                     fontSize: "22px",
-                    color: "#3a3a3a",
                     transform: active === i ? "rotate(45deg)" : "rotate(0deg)",
                     transition: "transform 0.3s ease, color 0.2s",
                     flexShrink: 0,
