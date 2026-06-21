@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -192,7 +193,7 @@ export default function Results() {
         </div>
 
         {/* Case studies */}
-        <div>
+        <div style={{ marginBottom: "120px" }}>
           <p
             style={{
               fontSize: "11px",
@@ -260,6 +261,120 @@ export default function Results() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Conferencias strip */}
+        <div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginBottom: "40px",
+              flexWrap: "wrap",
+              gap: "16px",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "11px",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: "#6b6b6b",
+              }}
+            >
+              Conferencias & Speaker
+            </p>
+            <p style={{ fontSize: "13px", color: "#3a3a3a" }}>
+              UTP — Universidad Tecnológica del Perú
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "16px",
+            }}
+          >
+            {/* Large photo — panel / speaking */}
+            <div
+              style={{
+                position: "relative",
+                aspectRatio: "4/3",
+                overflow: "hidden",
+                borderRadius: "2px",
+                background: "#111",
+              }}
+            >
+              <Image
+                src="/conf-panel.png"
+                alt="Moises Mejias — Conferencia UTP, panel"
+                fill
+                style={{ objectFit: "cover", objectPosition: "center top" }}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: "linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 50%)",
+                }}
+              />
+              <span
+                style={{
+                  position: "absolute",
+                  bottom: "20px",
+                  left: "20px",
+                  fontSize: "10px",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: "#c8b89a",
+                }}
+              >
+                Panel de expertos
+              </span>
+            </div>
+
+            {/* Group photo */}
+            <div
+              style={{
+                position: "relative",
+                aspectRatio: "4/3",
+                overflow: "hidden",
+                borderRadius: "2px",
+                background: "#111",
+              }}
+            >
+              <Image
+                src="/conf-grupo.png"
+                alt="Moises Mejias — Conferencia UTP, grupo"
+                fill
+                style={{ objectFit: "cover", objectPosition: "center top" }}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: "linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 50%)",
+                }}
+              />
+              <span
+                style={{
+                  position: "absolute",
+                  bottom: "20px",
+                  left: "20px",
+                  fontSize: "10px",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: "#c8b89a",
+                }}
+              >
+                200+ asistentes
+              </span>
+            </div>
           </div>
         </div>
       </div>
