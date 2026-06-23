@@ -182,7 +182,7 @@ export default function Hero() {
           <p
             style={{
               fontSize: "clamp(14px, 1.6vw, 18px)",
-              color: "#8a8a8a",
+              color: "#a8a8a8",
               maxWidth: "480px",
               lineHeight: 1.65,
               fontWeight: 400,
@@ -202,7 +202,7 @@ export default function Hero() {
               <div key={stat.label}>
                 <p
                   style={{
-                    fontSize: "clamp(28px, 3.5vw, 44px)",
+                    fontSize: "clamp(36px, 4vw, 52px)",
                     fontWeight: 900,
                     letterSpacing: "-0.04em",
                     color: "#f0ede8",
@@ -213,10 +213,10 @@ export default function Hero() {
                 </p>
                 <p
                   style={{
-                    fontSize: "11px",
-                    color: "#6b6b6b",
-                    letterSpacing: "0.06em",
-                    marginTop: "6px",
+                    fontSize: "12px",
+                    color: "#9a9a9a",
+                    letterSpacing: "0.08em",
+                    marginTop: "8px",
                   }}
                 >
                   {stat.label}

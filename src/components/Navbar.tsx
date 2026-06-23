@@ -87,14 +87,14 @@ export default function Navbar() {
               style={{
                 fontSize: "12px",
                 letterSpacing: "0.06em",
-                color: "#6b6b6b",
+                color: "#a0a0a0",
                 transition: "color 0.2s",
               }}
               onMouseEnter={(e) =>
                 ((e.target as HTMLElement).style.color = "#f0ede8")
               }
               onMouseLeave={(e) =>
-                ((e.target as HTMLElement).style.color = "#6b6b6b")
+                ((e.target as HTMLElement).style.color = "#a0a0a0")
               }
             >
               {l.label}
