@@ -14,7 +14,6 @@ const metrics = [
   { value: 3, suffix: "x", label: "Promedio de crecimiento en ventas" },
 ];
 
-// CASE STUDIES: Replace with your actual client cases
 const cases = [
   {
     label: "E-commerce — Moda",
@@ -112,9 +111,9 @@ export default function Results() {
       ref={sectionRef}
       id="resultados"
       style={{
-        background: "#0d0d0d",
+        background: "transparent",
         padding: "160px 40px",
-        borderTop: "1px solid #1e1e1e",
+        borderTop: "1px solid rgba(255,255,255,0.1)",
       }}
     >
       <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
@@ -125,7 +124,7 @@ export default function Results() {
               fontSize: "11px",
               letterSpacing: "0.18em",
               textTransform: "uppercase",
-              color: "#6b6b6b",
+              color: "#8899bb",
               marginBottom: "20px",
             }}
           >
@@ -152,7 +151,7 @@ export default function Results() {
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
             gap: "0",
-            borderTop: "1px solid #1e1e1e",
+            borderTop: "1px solid rgba(255,255,255,0.1)",
             marginBottom: "120px",
           }}
           className="grid-cols-2 md:grid-cols-4"
@@ -162,8 +161,8 @@ export default function Results() {
               key={m.label}
               style={{
                 padding: "48px 32px",
-                borderRight: i < metrics.length - 1 ? "1px solid #1e1e1e" : "none",
-                borderBottom: "1px solid #1e1e1e",
+                borderRight: i < metrics.length - 1 ? "1px solid rgba(255,255,255,0.1)" : "none",
+                borderBottom: "1px solid rgba(255,255,255,0.1)",
               }}
             >
               <p
@@ -181,7 +180,7 @@ export default function Results() {
               <p
                 style={{
                   fontSize: "12px",
-                  color: "#6b6b6b",
+                  color: "#8899bb",
                   letterSpacing: "0.04em",
                   lineHeight: 1.5,
                 }}
@@ -199,7 +198,7 @@ export default function Results() {
               fontSize: "11px",
               letterSpacing: "0.18em",
               textTransform: "uppercase",
-              color: "#6b6b6b",
+              color: "#8899bb",
               marginBottom: "40px",
             }}
           >
@@ -220,7 +219,7 @@ export default function Results() {
                 className="case-card"
                 style={{
                   padding: "40px",
-                  border: "1px solid #1e1e1e",
+                  border: "1px solid rgba(255,255,255,0.1)",
                   display: "flex",
                   flexDirection: "column",
                   gap: "24px",
@@ -231,7 +230,7 @@ export default function Results() {
                     fontSize: "10px",
                     letterSpacing: "0.14em",
                     textTransform: "uppercase",
-                    color: "#4a4a4a",
+                    color: "rgba(255,255,255,0.3)",
                   }}
                 >
                   {c.label}
@@ -251,9 +250,9 @@ export default function Results() {
                 <p
                   style={{
                     fontSize: "13px",
-                    color: "#6b6b6b",
+                    color: "#8899bb",
                     lineHeight: 1.7,
-                    borderTop: "1px solid #1e1e1e",
+                    borderTop: "1px solid rgba(255,255,255,0.1)",
                     paddingTop: "20px",
                   }}
                 >
@@ -281,12 +280,12 @@ export default function Results() {
                 fontSize: "11px",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
-                color: "#6b6b6b",
+                color: "#8899bb",
               }}
             >
               Conferencias & Speaker
             </p>
-            <p style={{ fontSize: "13px", color: "#3a3a3a" }}>
+            <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.2)" }}>
               UTP — Universidad Tecnológica del Perú
             </p>
           </div>
@@ -298,14 +297,13 @@ export default function Results() {
               gap: "16px",
             }}
           >
-            {/* Large photo — panel / speaking */}
             <div
               style={{
                 position: "relative",
                 aspectRatio: "4/3",
                 overflow: "hidden",
                 borderRadius: "2px",
-                background: "#111",
+                background: "#071830",
               }}
             >
               <Image
@@ -319,7 +317,7 @@ export default function Results() {
                 style={{
                   position: "absolute",
                   inset: 0,
-                  background: "linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 50%)",
+                  background: "linear-gradient(to top, rgba(11,48,104,0.7) 0%, transparent 50%)",
                 }}
               />
               <span
@@ -337,14 +335,13 @@ export default function Results() {
               </span>
             </div>
 
-            {/* Group photo */}
             <div
               style={{
                 position: "relative",
                 aspectRatio: "4/3",
                 overflow: "hidden",
                 borderRadius: "2px",
-                background: "#111",
+                background: "#071830",
               }}
             >
               <Image
@@ -358,7 +355,7 @@ export default function Results() {
                 style={{
                   position: "absolute",
                   inset: 0,
-                  background: "linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 50%)",
+                  background: "linear-gradient(to top, rgba(11,48,104,0.7) 0%, transparent 50%)",
                 }}
               />
               <span

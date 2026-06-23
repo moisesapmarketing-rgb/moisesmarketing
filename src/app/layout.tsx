@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import PageBackground from "@/components/PageBackground";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -41,6 +42,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${geist.variable} h-full`}>
       <body className="min-h-full antialiased">
+        <PageBackground />
         <CustomCursor />
         <WhatsAppButton />
         {children}

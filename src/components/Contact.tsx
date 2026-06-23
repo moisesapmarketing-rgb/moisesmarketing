@@ -112,9 +112,9 @@ export default function Contact() {
       ref={sectionRef}
       id="contacto"
       style={{
-        background: "#0a0a0a",
+        background: "transparent",
         padding: "160px 40px",
-        borderTop: "1px solid #1e1e1e",
+        borderTop: "1px solid rgba(255,255,255,0.06)",
       }}
     >
       <div style={{ maxWidth: "1400px", margin: "0 auto" }}>

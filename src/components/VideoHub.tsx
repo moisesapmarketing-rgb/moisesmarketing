@@ -72,9 +72,9 @@ export default function VideoHub() {
       ref={sectionRef}
       id="videos"
       style={{
-        background: "#0d0d0d",
+        background: "transparent",
         padding: "160px 40px",
-        borderTop: "1px solid #1e1e1e",
+        borderTop: "1px solid rgba(255,255,255,0.06)",
       }}
     >
       <div style={{ maxWidth: "1400px", margin: "0 auto" }}>

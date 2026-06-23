@@ -28,9 +28,9 @@ export default function Manifesto() {
       lines.forEach((line) => {
         gsap.fromTo(
           line,
-          { color: "#2a2a2a" },
+          { color: "#c8c5bf" },
           {
-            color: "#f0ede8",
+            color: "#1a1a1a",
             scrollTrigger: {
               trigger: line,
               start: "top 80%",
@@ -41,7 +41,6 @@ export default function Manifesto() {
         );
       });
 
-      // Photo reveal
       gsap.from(".manifesto-photo", {
         scale: 1.08,
         opacity: 0,
@@ -74,7 +73,7 @@ export default function Manifesto() {
       ref={sectionRef}
       id="sobre-mi"
       style={{
-        background: "#0a0a0a",
+        background: "transparent",
         padding: "160px 40px",
         position: "relative",
       }}
@@ -97,7 +96,7 @@ export default function Manifesto() {
               fontSize: "11px",
               letterSpacing: "0.18em",
               textTransform: "uppercase",
-              color: "#6b6b6b",
+              color: "#9a9690",
               marginBottom: "56px",
             }}
           >
@@ -114,7 +113,7 @@ export default function Manifesto() {
                   fontWeight: 800,
                   letterSpacing: "-0.03em",
                   lineHeight: 1.1,
-                  color: "#2a2a2a",
+                  color: "#c8c5bf",
                   transition: "color 0.1s",
                   marginBottom: "4px",
                 }}
@@ -127,7 +126,7 @@ export default function Manifesto() {
           <p
             style={{
               fontSize: "15px",
-              color: "#6b6b6b",
+              color: "#6b6864",
               lineHeight: 1.75,
               maxWidth: "440px",
               marginBottom: "40px",
@@ -157,8 +156,8 @@ export default function Manifesto() {
                 style={{
                   fontSize: "11px",
                   padding: "6px 14px",
-                  border: "1px solid #2a2a2a",
-                  color: "#6b6b6b",
+                  border: "1px solid #ccc9c2",
+                  color: "#6b6864",
                   borderRadius: "2px",
                   letterSpacing: "0.04em",
                 }}
@@ -187,7 +186,6 @@ export default function Manifesto() {
             priority
           />
 
-          {/* Overlay label */}
           <div
             style={{
               position: "absolute",

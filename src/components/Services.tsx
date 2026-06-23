@@ -95,9 +95,9 @@ export default function Services() {
       ref={sectionRef}
       id="servicios"
       style={{
-        background: "#0a0a0a",
+        background: "transparent",
         padding: "160px 40px",
-        borderTop: "1px solid #1e1e1e",
+        borderTop: "1px solid rgba(255,255,255,0.1)",
       }}
     >
       <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
@@ -119,7 +119,7 @@ export default function Services() {
                 fontSize: "11px",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
-                color: "#6b6b6b",
+                color: "#8899bb",
                 marginBottom: "20px",
               }}
             >
@@ -142,7 +142,7 @@ export default function Services() {
           <p
             style={{
               fontSize: "15px",
-              color: "#6b6b6b",
+              color: "#8899bb",
               maxWidth: "340px",
               lineHeight: 1.7,
             }}
@@ -161,7 +161,7 @@ export default function Services() {
               onClick={() => setActive(active === i ? null : i)}
               data-cursor-expand
               style={{
-                borderTop: "1px solid #1e1e1e",
+                borderTop: "1px solid rgba(255,255,255,0.1)",
                 paddingTop: "32px",
                 paddingBottom: active === i ? "0" : "32px",
                 cursor: "pointer",
@@ -171,7 +171,7 @@ export default function Services() {
                 (e.currentTarget as HTMLElement).style.borderTopColor = "#c8b89a";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderTopColor = "#1e1e1e";
+                (e.currentTarget as HTMLElement).style.borderTopColor = "rgba(255,255,255,0.1)";
               }}
             >
               <div
@@ -193,7 +193,7 @@ export default function Services() {
                   <span
                     style={{
                       fontSize: "11px",
-                      color: "#3a3a3a",
+                      color: "rgba(255,255,255,0.25)",
                       fontWeight: 600,
                       letterSpacing: "0.08em",
                       minWidth: "28px",
@@ -220,7 +220,7 @@ export default function Services() {
                     transform: active === i ? "rotate(45deg)" : "rotate(0deg)",
                     transition: "transform 0.3s ease, color 0.2s",
                     flexShrink: 0,
-                    color: active === i ? "#c8b89a" : "#3a3a3a",
+                    color: active === i ? "#c8b89a" : "rgba(255,255,255,0.25)",
                   }}
                 >
                   +
@@ -246,7 +246,7 @@ export default function Services() {
                   <p
                     style={{
                       fontSize: "16px",
-                      color: "#8a8a8a",
+                      color: "#a0b0c8",
                       lineHeight: 1.75,
                     }}
                   >
@@ -258,7 +258,7 @@ export default function Services() {
                         fontSize: "10px",
                         letterSpacing: "0.16em",
                         textTransform: "uppercase",
-                        color: "#4a4a4a",
+                        color: "rgba(255,255,255,0.3)",
                         marginBottom: "16px",
                       }}
                     >
@@ -270,9 +270,9 @@ export default function Services() {
                           key={d}
                           style={{
                             fontSize: "14px",
-                            color: "#8a8a8a",
+                            color: "#a0b0c8",
                             paddingBottom: "10px",
-                            borderBottom: "1px solid #1e1e1e",
+                            borderBottom: "1px solid rgba(255,255,255,0.08)",
                             marginBottom: "10px",
                             display: "flex",
                             alignItems: "center",
@@ -297,8 +297,7 @@ export default function Services() {
               </div>
             </div>
           ))}
-          {/* Last border */}
-          <div style={{ borderTop: "1px solid #1e1e1e" }} />
+          <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }} />
         </div>
       </div>
     </section>

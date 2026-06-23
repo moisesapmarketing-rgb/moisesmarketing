@@ -73,23 +73,20 @@ export default function Automations() {
       ref={sectionRef}
       id="automatizaciones"
       style={{
-        background: "#0a0a0a",
+        background: "transparent",
         padding: "160px 40px",
-        borderTop: "1px solid #1e1e1e",
+        borderTop: "1px solid #d8d5d0",
       }}
     >
       <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
         {/* Header */}
-        <div
-          className="auto-header"
-          style={{ marginBottom: "80px" }}
-        >
+        <div className="auto-header" style={{ marginBottom: "80px" }}>
           <p
             style={{
               fontSize: "11px",
               letterSpacing: "0.18em",
               textTransform: "uppercase",
-              color: "#6b6b6b",
+              color: "#9a9690",
               marginBottom: "20px",
             }}
           >
@@ -110,7 +107,7 @@ export default function Automations() {
                 fontWeight: 900,
                 letterSpacing: "-0.04em",
                 lineHeight: 0.95,
-                color: "#f0ede8",
+                color: "#0a0a0a",
               }}
             >
               Tu negocio
@@ -120,7 +117,7 @@ export default function Automations() {
             <p
               style={{
                 fontSize: "15px",
-                color: "#6b6b6b",
+                color: "#6b6864",
                 maxWidth: "380px",
                 lineHeight: 1.7,
               }}
@@ -143,7 +140,7 @@ export default function Automations() {
                 gridTemplateColumns: "1fr 1fr",
                 gap: "48px",
                 padding: "40px 0",
-                borderTop: "1px solid #1e1e1e",
+                borderTop: "1px solid #d8d5d0",
                 alignItems: "center",
               }}
             >
@@ -158,7 +155,7 @@ export default function Automations() {
                 <span
                   style={{
                     fontSize: "11px",
-                    color: "#3a3a3a",
+                    color: "#b0ada8",
                     fontWeight: 600,
                     letterSpacing: "0.08em",
                     minWidth: "28px",
@@ -173,7 +170,7 @@ export default function Automations() {
                       fontSize: "10px",
                       letterSpacing: "0.14em",
                       textTransform: "uppercase",
-                      color: "#4a4a4a",
+                      color: "#9a9690",
                       marginBottom: "12px",
                     }}
                   >
@@ -182,7 +179,7 @@ export default function Automations() {
                   <p
                     style={{
                       fontSize: "clamp(16px, 1.6vw, 20px)",
-                      color: "#8a8a8a",
+                      color: "#4a4845",
                       lineHeight: 1.5,
                       fontWeight: 500,
                     }}
@@ -208,7 +205,7 @@ export default function Automations() {
                 <p
                   style={{
                     fontSize: "clamp(16px, 1.6vw, 20px)",
-                    color: "#f0ede8",
+                    color: "#0a0a0a",
                     lineHeight: 1.5,
                     fontWeight: 500,
                   }}
@@ -218,7 +215,7 @@ export default function Automations() {
               </div>
             </div>
           ))}
-          <div style={{ borderTop: "1px solid #1e1e1e" }} />
+          <div style={{ borderTop: "1px solid #d8d5d0" }} />
         </div>
 
         {/* CTA banner */}
@@ -226,7 +223,7 @@ export default function Automations() {
           className="auto-cta"
           style={{
             padding: "56px",
-            border: "1px solid #1e1e1e",
+            border: "1px solid #ccc9c2",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
@@ -240,13 +237,13 @@ export default function Automations() {
                 fontSize: "clamp(22px, 2.8vw, 36px)",
                 fontWeight: 800,
                 letterSpacing: "-0.03em",
-                color: "#f0ede8",
+                color: "#0a0a0a",
                 marginBottom: "8px",
               }}
             >
               ¿Tienes un proceso que quieres automatizar?
             </p>
-            <p style={{ fontSize: "15px", color: "#6b6b6b" }}>
+            <p style={{ fontSize: "15px", color: "#6b6864" }}>
               Cuéntame el problema. Te digo si tiene solución con IA.
             </p>
           </div>
@@ -262,8 +259,8 @@ export default function Automations() {
               letterSpacing: "0.1em",
               textTransform: "uppercase",
               padding: "16px 36px",
-              background: "#c8b89a",
-              color: "#0a0a0a",
+              background: "#0B3068",
+              color: "#f0ede8",
               borderRadius: "2px",
               whiteSpace: "nowrap",
               flexShrink: 0,
