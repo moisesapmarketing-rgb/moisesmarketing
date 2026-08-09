@@ -854,10 +854,11 @@ export default function TallerContent() {
               <form
                 id="registerForm"
                 className="register-form reveal"
-                action="https://formspree.io/f/TUCODIGO"
+                action="https://formspree.io/f/mbdvrwzb"
                 method="POST"
                 noValidate
               >
+                <input type="hidden" name="fuente" value="Registro Taller Claude AI – Lima" />
                 <div className="quiz-progress">
                   <div className="quiz-progress-fill" id="quizProgressFill" />
                 </div>
