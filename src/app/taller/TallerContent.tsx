@@ -899,7 +899,7 @@ export default function TallerContent() {
               <form
                 id="registerForm"
                 className="register-form reveal"
-                action="https://formspree.io/f/mbdvrwzb"
+                action="https://formspree.io/f/mnpapdar"
                 method="POST"
                 noValidate
               >
