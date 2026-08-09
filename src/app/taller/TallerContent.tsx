@@ -271,27 +271,42 @@ const STYLES = `
   .taller-root .speaker-feature-role{color:var(--blue-light);font-weight:600;font-size:15px;margin-bottom:16px;}
   .taller-root .speaker-feature-content p{color:var(--text-secondary);}
 
-  .taller-root .support-strip{display:flex;flex-direction:column;gap:20px;margin-top:28px;align-items:stretch;}
-  @media (min-width:768px){ .taller-root .support-strip{flex-direction:row;align-items:center;} }
-  .taller-root .podcast-card{
-    display:flex;align-items:center;gap:14px;background:var(--bg-alt);
-    border:1px solid var(--border);border-radius:12px;padding:12px;
-    transition:border-color 0.2s ease,transform 0.2s ease;flex-shrink:0;
+  .taller-root .podcast-link{
+    display:inline-flex;align-items:center;gap:10px;margin-top:20px;
+    color:var(--text-secondary);font-size:14px;font-weight:600;
+    transition:color 0.2s ease;
   }
-  .taller-root .podcast-card:hover{border-color:var(--blue);transform:translateY(-2px);}
-  .taller-root .podcast-thumb{
-    position:relative;width:64px;height:64px;border-radius:8px;overflow:hidden;
-    background:linear-gradient(135deg,var(--border),var(--bg));flex-shrink:0;
-    display:flex;align-items:center;justify-content:center;
+  .taller-root .podcast-link:hover{color:var(--text);}
+  .taller-root .podcast-link .play-icon{
+    width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;
   }
-  .taller-root .podcast-thumb img{width:100%;height:100%;object-fit:cover;}
-  .taller-root .podcast-thumb .play-icon{
-    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-    color:#fff;font-size:16px;background:rgba(15,23,42,0.35);
+
+  .taller-root .also-learn{margin-top:48px;}
+  .taller-root .also-learn-title{font-size:24px;font-weight:800;margin-bottom:8px;text-align:center;}
+  @media (min-width:768px){ .taller-root .also-learn-title{font-size:28px;} }
+  .taller-root .also-learn-intro{color:var(--text-secondary);text-align:center;max-width:520px;margin:0 auto 28px;font-size:15px;}
+  .taller-root .also-learn-grid{display:grid;grid-template-columns:1fr;gap:20px;}
+  @media (min-width:768px){ .taller-root .also-learn-grid{grid-template-columns:1fr 1fr;gap:24px;} }
+  .taller-root .also-learn-card{
+    background:var(--text);color:var(--bg);border-radius:16px;padding:28px;
+    transition:transform 0.3s ease,box-shadow 0.3s ease;
   }
-  .taller-root .podcast-label{display:block;font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;font-weight:600;}
-  .taller-root .podcast-cta{display:block;color:var(--text);font-weight:700;font-size:15px;margin-top:2px;}
-  .taller-root .support-note{color:var(--text-secondary);font-size:14px;}
+  .taller-root .also-learn-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,0.35);}
+  .taller-root .also-learn-card .badge{
+    background:var(--bg);color:var(--text);border-color:var(--bg);margin-bottom:14px;
+  }
+  .taller-root .also-learn-card h4{font-size:19px;font-weight:800;color:var(--bg);margin-bottom:10px;}
+  .taller-root .also-learn-card p{color:#334155;font-size:15px;line-height:1.6;}
+
+  .taller-root .cupos-banner{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    max-width:1100px;margin:0 auto;padding:16px 24px;
+    background:#1D4ED814;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    color:var(--text-secondary);font-size:14px;font-weight:600;text-align:center;
+  }
+  .taller-root .cupos-banner-icon{font-size:16px;flex-shrink:0;}
+  .taller-root .cupos-banner strong{color:var(--blue-light);}
 
   .taller-root .form-wrap{max-width:560px;margin:0 auto;position:relative;z-index:1;}
   .taller-root .register-form{
@@ -396,9 +411,13 @@ const STYLES = `
 export default function TallerContent() {
   const [logoError, setLogoError] = useState(false);
   const [photoError, setPhotoError] = useState(false);
-  const [podcastThumbError, setPodcastThumbError] = useState(false);
 
   useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+
     const navbar = document.getElementById("navbar");
     const onScroll = () => {
       if (!navbar) return;
@@ -452,6 +471,10 @@ export default function TallerContent() {
     const CUPOS_RESERVADOS = 9;
     const cuposDisponibles = CUPOS_TOTAL - CUPOS_RESERVADOS;
 
+    document.querySelectorAll(".cupos-banner-number").forEach((el) => {
+      el.textContent = String(cuposDisponibles);
+    });
+
     let statsObserver: IntersectionObserver | undefined;
     const statsRow = document.querySelector(".stats-row");
     if (statsRow && "IntersectionObserver" in window) {
@@ -486,14 +509,16 @@ export default function TallerContent() {
     const backBtn = document.getElementById("quizBack");
     let currentStep = 1;
 
-    function showStep(n: number) {
+    function showStep(n: number, focusInput = true) {
       steps.forEach((s) => s.classList.remove("active"));
       const target = steps[n - 1];
       target?.classList.add("active");
-      const input = target?.querySelector<HTMLInputElement>(
-        'input[type="text"], input[type="tel"], input[type="email"]'
-      );
-      if (input) setTimeout(() => input.focus(), 200);
+      if (focusInput) {
+        const input = target?.querySelector<HTMLInputElement>(
+          'input[type="text"], input[type="tel"], input[type="email"]'
+        );
+        if (input) setTimeout(() => input.focus(), 200);
+      }
       if (progressFill) progressFill.style.width = (n / totalSteps) * 100 + "%";
       if (stepCurrentEl) stepCurrentEl.textContent = String(n);
       backBtn?.classList.toggle("is-hidden", n === 1);
@@ -562,7 +587,7 @@ export default function TallerContent() {
       return { opt, handler };
     });
 
-    if (steps.length) showStep(1);
+    if (steps.length) showStep(1, false);
 
     const onSubmit = (e: Event) => {
       e.preventDefault();
@@ -773,6 +798,14 @@ export default function TallerContent() {
           </div>
         </section>
 
+        <div className="cupos-banner reveal">
+          <span className="cupos-banner-icon">🕐</span>
+          <span>
+            Quedan <strong className="cupos-banner-number">30</strong> cupos con precio de
+            lanzamiento
+          </span>
+        </div>
+
         <section className="section section-divider" id="contenido">
           <div className="container">
             <div className="section-header reveal">
@@ -806,38 +839,50 @@ export default function TallerContent() {
                   analizar a tu competencia para mejorar tu contenido y llegar exactamente al
                   público que quieres.
                 </p>
+                <a
+                  className="podcast-link"
+                  href="https://www.youtube.com/@MoisesMarketing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="play-icon">▶</span>
+                  Escucha mi podcast en YouTube →
+                </a>
               </div>
             </div>
 
-            <div className="support-strip reveal">
-              <a
-                className="podcast-card"
-                href="https://www.youtube.com/@MoisesMarketing"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className={`podcast-thumb${podcastThumbError ? " photo-empty" : ""}`}>
-                  {!podcastThumbError && (
-                    <img
-                      src="/taller/podcast-thumb.jpg"
-                      alt="Podcast de Moises Mejias"
-                      onError={() => setPodcastThumbError(true)}
-                    />
-                  )}
-                  <span className="play-icon">▶</span>
+            <div className="also-learn reveal">
+              <h3 className="also-learn-title">Además aprenderás</h3>
+              <p className="also-learn-intro">Con la participación de especialistas invitados.</p>
+              <div className="also-learn-grid">
+                <div className="also-learn-card">
+                  <span className="badge">Claude AI · Certificado en Perú</span>
+                  <h4>Claude AI desde cero</h4>
+                  <p>
+                    De la mano de un experto certificado en Claude AI en Perú — uno de los pocos
+                    con esta certificación oficial en el país.
+                  </p>
                 </div>
-                <div>
-                  <span className="podcast-label">Mi podcast</span>
-                  <span className="podcast-cta">Ver en YouTube →</span>
+                <div className="also-learn-card">
+                  <span className="badge">Contenido &amp; Video con IA</span>
+                  <h4>Creación de contenido y generación de videos con IA</h4>
+                  <p>
+                    Con un especialista en producción de contenido digital y generación de video
+                    usando inteligencia artificial.
+                  </p>
                 </div>
-              </a>
-              <p className="support-note">
-                Te acompañará además un grupo de especialistas invitados: un experto certificado
-                en Claude AI y un referente en creación de contenido con IA.
-              </p>
+              </div>
             </div>
           </div>
         </section>
+
+        <div className="cupos-banner reveal">
+          <span className="cupos-banner-icon">🕐</span>
+          <span>
+            Quedan <strong className="cupos-banner-number">30</strong> cupos con precio de
+            lanzamiento
+          </span>
+        </div>
 
         <section className="section" id="registro">
           <div className="container">
