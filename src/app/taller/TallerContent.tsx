@@ -599,9 +599,20 @@ export default function TallerContent() {
         submitBtn.textContent = "Enviando...";
       }
 
+      const formData = new FormData(form);
+
+      fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nombre: formData.get("nombre"),
+          correo: formData.get("correo"),
+        }),
+      }).catch(() => {});
+
       fetch(form.action, {
         method: "POST",
-        body: new FormData(form),
+        body: formData,
         headers: { Accept: "application/json" },
       })
         .then((response) => {
