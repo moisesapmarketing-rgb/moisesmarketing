@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// TODO: cambiar a un remitente del dominio propio (ej. noreply@moisesmejias.com)
-// una vez que ese dominio esté verificado en Resend. Hasta entonces, con este
-// remitente de prueba Resend solo entrega al correo dueño de la cuenta.
-const FROM_ADDRESS = "Moises Mejias <onboarding@resend.dev>";
+const FROM_ADDRESS = "Moises Mejias <noreply@moisesmejias.com>";
 
 export async function POST(request: NextRequest) {
   const apiKey = process.env.RESEND_API_KEY;
