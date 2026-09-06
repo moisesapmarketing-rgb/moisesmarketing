@@ -233,10 +233,10 @@ export default function Contact() {
                 }}
               >
                 <Image
-                  src="/moises-casual-1.jpg"
+                  src="/moises-headshot.jpg"
                   alt="Moises Mejias"
                   fill
-                  style={{ objectFit: "cover", objectPosition: "center top" }}
+                  style={{ objectFit: "cover", objectPosition: "center center" }}
                 />
               </div>
               <p style={{ fontSize: "13px", color: "#6b6b6b", lineHeight: 1.5 }}>
