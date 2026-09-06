@@ -179,7 +179,7 @@ export default function Manifesto() {
           }}
         >
           <Image
-            src="/moises.png"
+            src="/moises-casual-1.jpg"
             alt="Moises Mejias"
             fill
             style={{ objectFit: "cover", objectPosition: "center top" }}
