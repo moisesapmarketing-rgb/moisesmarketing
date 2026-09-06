@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -210,6 +211,39 @@ export default function Contact() {
                   ))}
                 </div>
               </div>
+            </div>
+
+            <div
+              style={{
+                marginTop: "48px",
+                display: "flex",
+                alignItems: "center",
+                gap: "16px",
+              }}
+            >
+              <div
+                style={{
+                  width: "64px",
+                  height: "64px",
+                  borderRadius: "50%",
+                  overflow: "hidden",
+                  flexShrink: 0,
+                  border: "1px solid rgba(255,255,255,0.12)",
+                  position: "relative",
+                }}
+              >
+                <Image
+                  src="/moises-casual-1.jpg"
+                  alt="Moises Mejias"
+                  fill
+                  style={{ objectFit: "cover", objectPosition: "center top" }}
+                />
+              </div>
+              <p style={{ fontSize: "13px", color: "#6b6b6b", lineHeight: 1.5 }}>
+                Te leo y respondo yo mismo.
+                <br />
+                Sin equipo de por medio.
+              </p>
             </div>
           </div>
 
