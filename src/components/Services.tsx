@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -98,9 +99,36 @@ export default function Services() {
         background: "transparent",
         padding: "160px 40px",
         borderTop: "1px solid rgba(255,255,255,0.1)",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
-      <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          width: "44%",
+          height: "100%",
+          opacity: 0.08,
+          filter: "grayscale(1)",
+          pointerEvents: "none",
+        }}
+      >
+        <Image
+          src="/moises-casual-2.jpg"
+          alt=""
+          fill
+          style={{
+            objectFit: "cover",
+            objectPosition: "top center",
+            maskImage: "linear-gradient(90deg, transparent 0%, black 40%)",
+            WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 40%)",
+          }}
+        />
+      </div>
+      <div style={{ maxWidth: "1400px", margin: "0 auto", position: "relative" }}>
         {/* Header */}
         <div
           className="services-header"
